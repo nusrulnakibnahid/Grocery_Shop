@@ -36,6 +36,5 @@ Grocery Shop is a web-based application designed to facilitate the online purcha
 ## Future Enhancements
 - Implement payment gateway integration
 - Add product search and filtering
-- Enhance UI/UX with modern design
 - Implement user order history
 
