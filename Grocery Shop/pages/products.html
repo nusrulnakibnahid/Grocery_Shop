@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - FreshMart</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header (Same as index.html) -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../assets/images/grocery store logo.png" alt="FreshMart Logo" height="40">
+                    FreshMart
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="products.html">Products</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu" id="category-dropdown">
+                                <!-- Category 1: Fruits -->
+                                <li>
+                                    <a class="dropdown-item" href="products.html?category=fruits">
+                                        <i class="fas fa-apple-alt me-2"></i> Fruits
+                                    </a>
+                                </li>
+                                <!-- Category 2: Vegetables -->
+                                <li>
+                                    <a class="dropdown-item" href="products.html?category=vegetables">
+                                        <i class="fas fa-carrot me-2"></i> Vegetables
+                                    </a>
+                                </li>
+                                <!-- Category 3: Dairy -->
+                                <li>
+                                    <a class="dropdown-item" href="products.html?category=dairy">
+                                        <i class="fas fa-cheese me-2"></i> Dairy
+                                    </a>
+                                </li>
+                                <!-- Category 4: Beverages -->
+                                <li>
+                                    <a class="dropdown-item" href="products.html?category=beverages">
+                                        <i class="fas fa-coffee me-2"></i> Beverages
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html">Cart <span id="cart-count" class="badge bg-success">0</span></a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <form class="d-flex me-2">
+                            <input class="form-control me-2" type="search" id="search-input" placeholder="Search products..." aria-label="Search">
+                            <button class="btn btn-outline-success" id="search-btn" type="button">Search</button>
+                        </form>
+                        <div id="auth-buttons">
+                            <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
+                            <a href="register.html" class="btn btn-primary">Register</a>
+                        </div>
+                        <div id="user-profile" class="dropdown d-none">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i> <span id="username">User</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                                <li><a class="dropdown-item" href="orders.html">My Orders</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mt-5">
+        <h2 class="mb-4">All Products</h2>
+        <div class="row" id="products-container">
+           
+    
+            <!-- Product 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/apple.jpg" class="card-img-top" alt="Apple">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Apple</h5>
+                        <p class="card-text">Crisp and juicy apples, perfect for snacking.</p>
+                        <p class="product-price">$2.99/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-1" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-1" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(1, 'Fresh Apple', 2.99, 'assets/images/apple.jpg', document.getElementById('quantity-1').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/carrot.jpg" class="card-img-top" alt="Carrot">
+                    <div class="card-body">
+                        <h5 class="card-title">Organic Carrot</h5>
+                        <p class="card-text">Fresh and crunchy organic carrots.</p>
+                        <p class="product-price">$1.49/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-2" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-2" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(2, 'Organic Carrot', 1.49, 'assets/images/carrot.jpg', document.getElementById('quantity-2').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/milk.jpg" class="card-img-top" alt="Milk">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Milk</h5>
+                        <p class="card-text">Pure and fresh milk, rich in nutrients.</p>
+                        <p class="product-price">$3.99/liter</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-3" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-3" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(3, 'Fresh Milk', 3.99, 'assets/images/milk.jpg', document.getElementById('quantity-3').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/bread.jpg" class="card-img-top" alt="Bread">
+                    <div class="card-body">
+                        <h5 class="card-title">Whole Wheat Bread</h5>
+                        <p class="card-text">Healthy and delicious whole wheat bread.</p>
+                        <p class="product-price">$2.49/loaf</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-4" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-4" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(4, 'Whole Wheat Bread', 2.49, 'assets/images/bread.jpg', document.getElementById('quantity-4').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/orange-juice.jpg" class="card-img-top" alt="Orange Juice">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Orange Juice</h5>
+                        <p class="card-text">100% natural and refreshing orange juice.</p>
+                        <p class="product-price">$4.99/liter</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-5" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-5" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(5, 'Fresh Orange Juice', 4.99, 'assets/images/orange-juice.jpg', document.getElementById('quantity-5').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/eggs.jpg" class="card-img-top" alt="Eggs">
+                    <div class="card-body">
+                        <h5 class="card-title">Farm Fresh Eggs</h5>
+                        <p class="card-text">Organic eggs from free-range chickens.</p>
+                        <p class="product-price">$5.99/dozen</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-6" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-6" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(6, 'Farm Fresh Eggs', 5.99, 'assets/images/eggs.jpg', document.getElementById('quantity-6').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 7 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/banana.jpg" class="card-img-top" alt="Banana">
+                    <div class="card-body">
+                        <h5 class="card-title">Ripe Bananas</h5>
+                        <p class="card-text">Sweet and healthy bananas, perfect for smoothies.</p>
+                        <p class="product-price">$1.99/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-7" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-7" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(7, 'Ripe Bananas', 1.99, 'assets/images/banana.jpg', document.getElementById('quantity-7').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 8 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/yogurt.jpg" class="card-img-top" alt="Yogurt">
+                    <div class="card-body">
+                        <h5 class="card-title">Greek Yogurt</h5>
+                        <p class="card-text">Creamy and protein-rich Greek yogurt.</p>
+                        <p class="product-price">$2.99/pack</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-8" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-8" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(8, 'Greek Yogurt', 2.99, 'assets/images/yogurt.jpg', document.getElementById('quantity-8').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 9 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/cheese.jpg" class="card-img-top" alt="Cheese">
+                    <div class="card-body">
+                        <h5 class="card-title">Cheddar Cheese</h5>
+                        <p class="card-text">Rich and flavorful cheddar cheese.</p>
+                        <p class="product-price">$4.99/pack</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-9" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-9" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(9, 'Cheddar Cheese', 4.99, 'assets/images/cheese.jpg', document.getElementById('quantity-9').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 10 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/coffee.jpg" class="card-img-top" alt="Coffee">
+                    <div class="card-body">
+                        <h5 class="card-title">Premium Coffee</h5>
+                        <p class="card-text">Freshly roasted coffee beans for a rich flavor.</p>
+                        <p class="product-price">$7.99/pack</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-10" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-10" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(10, 'Premium Coffee', 7.99, 'assets/images/coffee.jpg', document.getElementById('quantity-10').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 11 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/pasta.jpg" class="card-img-top" alt="Pasta">
+                    <div class="card-body">
+                        <h5 class="card-title">Whole Grain Pasta</h5>
+                        <p class="card-text">Healthy and delicious whole grain pasta.</p>
+                        <p class="product-price">$3.49/pack</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-11" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-11" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(11, 'Whole Grain Pasta', 3.49, 'assets/images/pasta.jpg', document.getElementById('quantity-11').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 12 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/honey.jpg" class="card-img-top" alt="Honey">
+                    <div class="card-body">
+                        <h5 class="card-title">Pure Honey</h5>
+                        <p class="card-text">Natural and unprocessed honey.</p>
+                        <p class="product-price">$6.99/jar</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-12" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-12" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(12, 'Pure Honey', 6.99, 'assets/images/honey.jpg', document.getElementById('quantity-12').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 13 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/tomato.jpg" class="card-img-top" alt="Tomato">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Tomatoes</h5>
+                        <p class="card-text">Juicy and flavorful tomatoes.</p>
+                        <p class="product-price">$1.99/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-13" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-13" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(13, 'Fresh Tomatoes', 1.99, 'assets/images/tomato.jpg', document.getElementById('quantity-13').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 14 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/potato.jpg" class="card-img-top" alt="Potato">
+                    <div class="card-body">
+                        <h5 class="card-title">Organic Potatoes</h5>
+                        <p class="card-text">Fresh and organic potatoes.</p>
+                        <p class="product-price">$1.29/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-14" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-14" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(14, 'Organic Potatoes', 1.29, 'assets/images/potato.jpg', document.getElementById('quantity-14').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 15 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/onion.jpg" class="card-img-top" alt="Onion">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Onions</h5>
+                        <p class="card-text">Crisp and flavorful onions.</p>
+                        <p class="product-price">$1.49/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-15" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-15" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(15, 'Fresh Onions', 1.49, 'assets/images/onion.jpg', document.getElementById('quantity-15').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 16 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/lettuce.jpg" class="card-img-top" alt="Lettuce">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Lettuce</h5>
+                        <p class="card-text">Crisp and fresh lettuce for salads.</p>
+                        <p class="product-price">$1.99/head</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-16" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-16" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(16, 'Fresh Lettuce', 1.99, 'assets/images/lettuce.jpg', document.getElementById('quantity-16').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 17 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/cucumber.jpg" class="card-img-top" alt="Cucumber">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Cucumbers</h5>
+                        <p class="card-text">Cool and refreshing cucumbers.</p>
+                        <p class="product-price">$1.79/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-17" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-17" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(17, 'Fresh Cucumbers', 1.79, 'assets/images/cucumber.jpg', document.getElementById('quantity-17').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 18 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/pepper.jpg" class="card-img-top" alt="Pepper">
+                    <div class="card-body">
+                        <h5 class="card-title">Bell Peppers</h5>
+                        <p class="card-text">Colorful and crunchy bell peppers.</p>
+                        <p class="product-price">$2.49/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-18" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-18" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(18, 'Bell Peppers', 2.49, 'assets/images/pepper.jpg', document.getElementById('quantity-18').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 19 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/garlic.jpg" class="card-img-top" alt="Garlic">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Garlic</h5>
+                        <p class="card-text">Aromatic and flavorful garlic.</p>
+                        <p class="product-price">$1.99/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-19" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-19" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(19, 'Fresh Garlic', 1.99, 'assets/images/garlic.jpg', document.getElementById('quantity-19').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 20 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="assets/images/ginger.jpg" class="card-img-top" alt="Ginger">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Ginger</h5>
+                        <p class="card-text">Spicy and aromatic ginger.</p>
+                        <p class="product-price">$2.99/kg</p>
+                        <div class="quantity-control mb-3">
+                            <label for="quantity-20" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="quantity-20" value="1" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="addToCart(20, 'Fresh Ginger', 2.99, 'assets/images/ginger.jpg', document.getElementById('quantity-20').value)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+       
+    </main>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-dark text-white mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>FreshMart</h5>
+                    <p>Your one-stop shop for fresh groceries and household essentials.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-white">Home</a></li>
+                        <li><a href="products.html" class="text-white">Products</a></li>
+                        <li><a href="cart.html" class="text-white">Cart</a></li>
+                        <li><a href="login.html" class="text-white">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <address>
+                        <p>Daffodil Smart City<br>
+                        Savar, Asulia<br>
+                        Phone: +8801*********<br>
+                        Email: info@freshmart.com</p>
+                    </address>
+                </div>
+                <div class="col-md-2">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2025 FreshMart. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/products.js"></script>
+</body>
+</html>
