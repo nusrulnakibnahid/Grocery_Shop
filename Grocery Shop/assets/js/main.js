@@ -1,13 +1,18 @@
 // main.js - Main JavaScript for FreshMart Online Grocery Shop
 
+
 // Base API URL
 const API_BASE_URL = 'https://fakestoreapi.com';
+
+
 
 // DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
     setupEventListeners();
 });
+
+
 
 // Initialize Application
 function initializeApp() {
